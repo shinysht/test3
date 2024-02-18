@@ -1,6 +1,7 @@
 
 plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
+    id "me.modmuss50.mod-publish-plugin" version "0.5.1"
 }
 
 
@@ -146,9 +147,39 @@ dependencies {
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    // http://www.gradle.org/docs/current/userguide/dependency_management.html https://discord.com/api/webhooks/1208912583264829440/FQ8EfF3iC2Owbq27ZP-x4teDXmZlj81Bu7L9uduOinP2AWI6zjGNDWkeTzHx24T9u8-L
     // runtimeOnly fg.deobf("curse.maven:ftbquests-289412:4530022")
     implementation fg.deobf("curse.maven:deeperanddarker-659011:4166676")
+}
+
+publishMods {
+	file = remapJar.archiveFile
+	changelog = System.getenv('CHANGELOG')
+	version = "v${project.version}"
+	displayName = "Skyblocker ${mod_version} for ${minecraft_version}"
+	modLoaders.add("fabric")
+	type = STABLE
+    dryRun = true
+    discord {
+        // Pass in the secret webhook URL. Required
+        webhookUrl = "https://discord.com/api/webhooks/1208912583264829440/FQ8EfF3iC2Owbq27ZP-x4teDXmZlj81Bu7L9uduOinP2AWI6zjGNDWkeTzHx24T9u8-L"
+ 
+        // Pass in the secret webhook URL to post the messages when running a dry run. Optional
+        dryRunWebhookUrl = "https://discord.com/api/webhooks/1208912583264829440/FQ8EfF3iC2Owbq27ZP-x4teDXmZlj81Bu7L9uduOinP2AWI6zjGNDWkeTzHx24T9u8-L"
+ 
+        // Set the username used to send the webhook, defaults to "Mod Publish Plugin"
+        username = "My Cool Mod"
+ 
+        // Set the avatar image url for the webhook, defaults to none.
+        avatarUrl = "https://placekitten.com/500/500"
+ 
+        // Set the content message, in this example a header is added before the changelog. Defaults to just the changelog
+        content = changelog.map { "<@&1134565945482948638> \n# A new version of my cool mod has been released! \n" + it}
+ 
+        // If you wish to only link to certain platform you can do the following
+        setPlatforms(platforms.curseforge, platforms.github)
+    }
+    
 }
 
 // Example for how to get properties into the manifest for reading at runtime.

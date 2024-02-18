@@ -175,9 +175,7 @@ publishMods {
  
         // Set the content message, in this example a header is added before the changelog. Defaults to just the changelog
         content = changelog.map { "<@&1134565945482948638> \n# A new version of my cool mod has been released! \n" + it}
- 
-        // If you wish to only link to certain platform you can do the following
-        setPlatforms(platforms.curseforge, platforms.github)
+
     }
     
 }

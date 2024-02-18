@@ -153,11 +153,11 @@ dependencies {
 }
 
 publishMods {
-	file = remapJar.archiveFile
+	file = jar.archiveFile
 	changelog = System.getenv('CHANGELOG')
 	version = "v${project.version}"
 	displayName = "Skyblocker ${mod_version} for ${minecraft_version}"
-	modLoaders.add("fabric")
+	modLoaders.add("forge")
 	type = STABLE
     dryRun = true
     discord {

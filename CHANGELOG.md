@@ -8,7 +8,7 @@
 * f3/m3 guardian health display by @KhafraDev
 * f5/m5 livid color title by @kevinthegreat1
 * remove screens when switching island by @LifeIsAParadox
-* Dungeon Score by @kevinthegreat1
+* Dungeon Score by @kevinthegreat1s
 * greatly enhanced dungeon score by @Emirlol
 * Toggle Sky Mall Filter by @AzureAaron
 * tips by @kevinthegreat1
